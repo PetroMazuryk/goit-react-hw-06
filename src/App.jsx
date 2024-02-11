@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
-import Notiflix from 'notiflix';
+import toast, { Toaster } from 'react-hot-toast';
 
+import initialContacts from './data/initialContacts.json';
 import { ContactList } from './components/ContactList/ContactList.jsx';
 import { Section } from './components/Section/Section.jsx';
 import { SearchBar } from './components/SearchBar/SearchBar.jsx';
-import initialContacts from './data/initialContacts.json';
 import { ContactForm } from './components/ContactForm/ContactForm.jsx';
 import { Notification } from './components/Notification/Notification.jsx';
 import { PhoneTitle } from './components/PhoneTitle/PhoneTitle.jsx';
@@ -36,9 +36,10 @@ export const App = () => {
     );
 
     if (isContactExists) {
-      Notiflix.Notify.info(`${newContact.name} is already in contacts. Enter a different name`);
+      toast.error(`${newContact.name} is already in contacts. Enter a different name`);
     } else {
-      Notiflix.Notify.success(` Your name ${newContact.name} has been added to the list`);
+      toast.success(`Your name ${newContact.name} has been added to the list`);
+
       addContactUser(newContact);
       actions.resetForm();
     }
@@ -87,6 +88,24 @@ export const App = () => {
           <Notification message="There is no added contacts"></Notification>
         )}
       </Section>
+      <Toaster
+        toastOptions={{
+          success: {
+            duration: 3000,
+            style: {
+              color: 'white',
+              background: '#26d480',
+            },
+          },
+          error: {
+            duration: 3000,
+            style: {
+              color: 'white',
+              background: '#d42643',
+            },
+          },
+        }}
+      />
     </>
   );
 };

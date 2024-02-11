@@ -8,7 +8,7 @@ export const PhoneTitle = () => {
   return (
     <CSSTransition in={true} appear={true} timeout={500} classNames={css} nodeRef={itemRef}>
       <h1 className={css.title} ref={itemRef}>
-        Phonebook 03
+        Phonebook 06
       </h1>
     </CSSTransition>
   );
