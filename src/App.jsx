@@ -36,9 +36,9 @@ export const App = () => {
     );
 
     if (isContactExists) {
-      toast.error(`${newContact.name} is already in contacts. Enter a different name`);
+      toast.error(` "${newContact.name}"  is already in contacts. Enter a different name`);
     } else {
-      toast.success(`Your name ${newContact.name} has been added to the list`);
+      toast.success(`Your name  "${newContact.name}"  has been added to the list`);
 
       addContactUser(newContact);
       actions.resetForm();
