@@ -1,6 +1,11 @@
 import { Formik, Form, Field } from 'formik';
 import { useId } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getContact } from '../../redux/selectors';
+
+import { nanoid } from 'nanoid';
+
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
 import css from './ContactForm.module.css';
@@ -19,12 +24,16 @@ const initialValues = {
   number: '',
 };
 
-export const ContactForm = ({ onAddContact }) => {
+export const ContactForm = () => {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
   return (
-    <Formik initialValues={initialValues} validationSchema={ContactSchema} onSubmit={onAddContact}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={ContactSchema}
+      // onSubmit={handleFormSubmit}
+    >
       <Form className={css.form}>
         <div className={css.labelWrapper}>
           <label className={css.label} htmlFor={nameFieldId}>
