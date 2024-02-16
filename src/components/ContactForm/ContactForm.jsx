@@ -33,7 +33,7 @@ export const ContactForm = () => {
   const handleFormSubmit = (values, { resetForm }) => {
     const { name, number } = values;
 
-    const contactAlreadyExists = contacts.contacts.findIndex(item => item.name === name);
+    const contactAlreadyExists = contacts.contacts.some(item => item.name === name);
 
     if (contactAlreadyExists) {
       toast.error(`A contact with the name "${name}" already exists`);
