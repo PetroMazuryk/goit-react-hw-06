@@ -69,44 +69,18 @@ export const App = () => {
   return (
     <>
       <PhoneTitle />
+
       <Section title="Add new contacts">
         <ContactForm />
       </Section>
+
       <Section title="Find contacts by name">
-        <SearchBar
-        // enterField={nameFilter}
-        // value={nameFilter}
-        // onChange={handleChange}
-        // onClick={clearFilterField}
-        />
+        <SearchBar />
       </Section>
 
       <Section title="Contact List">
-        {/* {contactsUsers.length > 0 ? (
-          <ContactList contacts={visibleContactsUsers} onDelete={deleteUser} />
-        ) : (
-          <Notification message="There is no added contacts"></Notification>
-        )} */}
         <ContactList />
       </Section>
-      {/* <Toaster
-        toastOptions={{
-          success: {
-            duration: 3000,
-            style: {
-              color: 'white',
-              background: '#26d480',
-            },
-          },
-          error: {
-            duration: 3000,
-            style: {
-              color: 'white',
-              background: '#d42643',
-            },
-          },
-        }}
-      /> */}
     </>
   );
 };
