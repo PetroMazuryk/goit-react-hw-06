@@ -1,10 +1,10 @@
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { Contact } from '../Contact/Contact';
+import Contact from '../Contact/Contact';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContact, getFilter } from '../../redux/selectors';
 import { removeContact } from '../../redux/contactsSlice';
 
-export const ContactList = () => {
+export default function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContact);
   const filter = useSelector(getFilter);
@@ -24,4 +24,4 @@ export const ContactList = () => {
       ))}
     </TransitionGroup>
   );
-};
+}
