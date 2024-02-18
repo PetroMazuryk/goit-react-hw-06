@@ -74,14 +74,22 @@ export default function ContactForm() {
       </Formik>
       <Toaster
         position="top-center"
+       
+        containerStyle={{ marginTop: 98 }}
         toastOptions={{
           style: {
+            maxWidth: '800px',
+            borderRadius: '24px',
             background: '#363636',
             color: '#fff',
           },
           error: {
             duration: 4000,
             icon: '🔥',
+            theme: {
+              primary: 'green',
+              secondary: 'black',
+            },
           },
         }}
       />
