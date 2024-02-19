@@ -11,7 +11,10 @@ import { ErrorMessage } from 'formik';
 import css from './ContactForm.module.css';
 
 const ContactSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
   number: Yup.string()
     .matches(/^[0-9]+$/, 'Must be only digits')
     .min(5, 'Must be exactly 5 digits')
@@ -33,7 +36,9 @@ export default function ContactForm() {
   const handleFormSubmit = (values, { resetForm }) => {
     const { name, number } = values;
 
-    const contactAlreadyExists = contacts.contacts.some(item => item.name === name);
+    const contactAlreadyExists = contacts.contacts.some(
+      item => item.name === name
+    );
 
     if (contactAlreadyExists) {
       toast.error(`A contact with the name "${name}" already exists`);
@@ -56,15 +61,29 @@ export default function ContactForm() {
             <label className={css.label} htmlFor={nameFieldId}>
               Name
             </label>
-            <Field className={css.field} type="text" name="name" id={nameFieldId} />
+            <Field
+              className={css.field}
+              type="text"
+              name="name"
+              id={nameFieldId}
+            />
             <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.labelWrapper}>
             <label className={css.label} htmlFor={numberFieldId}>
               Number
             </label>
-            <Field className={css.field} type="number" name="number" id={numberFieldId} />
-            <ErrorMessage className={css.error} name="number" component="span" />
+            <Field
+              className={css.field}
+              type="number"
+              name="number"
+              id={numberFieldId}
+            />
+            <ErrorMessage
+              className={css.error}
+              name="number"
+              component="span"
+            />
           </div>
 
           <button className={css.button} type="submit">
@@ -74,7 +93,6 @@ export default function ContactForm() {
       </Formik>
       <Toaster
         position="top-center"
-       
         containerStyle={{ marginTop: 98 }}
         toastOptions={{
           style: {
